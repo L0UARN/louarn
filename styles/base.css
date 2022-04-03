@@ -54,6 +54,13 @@
     src: url("../fonts/poppins-bolditalic.woff2"), url("../fonts/poppins-bolditalic.woff");
 }
 
+@font-face {
+    font-family: 'Bebas Neue';
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/bebasneue-regular.woff2"), url("../fonts/bebasneue-regular.woff");
+}
+
 html, body {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
@@ -62,8 +69,8 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cascadia Code', monospace;
-    font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: normal;
     font-style: normal;
 
     margin: 0.75rem 0;
@@ -137,6 +144,47 @@ a:after {
 }
 
 a:hover:after {
+    left: 0;
+    right: auto;
+    width: 100%;
+}
+
+button {
+    position: relative;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(255, 255, 255, 0.0);
+
+    transition: transform 100ms, box-shadow 100ms;
+}
+
+button:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.2rem 0 black;
+}
+
+button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    z-index: -1;
+    border-radius: 6px;
+    background-color: #FFC000;
+
+    transition: width 200ms;
+}
+
+button:hover:after {
     left: 0;
     right: auto;
     width: 100%;
