@@ -1,0 +1,87 @@
+html, body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cascadia Code', monospace;
+    font-weight: bold;
+    font-style: normal;
+
+    margin: 0.75rem 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2.0rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+h5 {
+    font-size: 1.4rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+a {
+    position: relative;
+    border-radius: 6px;
+    padding: 0.1rem 0.2rem;
+    color: black;
+    text-decoration: none;
+    background-color: #FFC000;
+}
+
+a:before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0.1rem;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.5rem 0 0.2rem;
+    background-size: 1rem 1rem;
+    background-image: url("../images/link.png");
+}
+
+a:active:before {
+    background-image: url("../images/check.png");
+}
+
+a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0.2rem;
+    border-radius: 0 0 6px 6px;
+    background-color: black;
+
+    transition: width 200ms, height 200ms, border-radius 200ms;
+}
+
+a:hover:after {
+    left: 0;
+    right: auto;
+    width: 100%;
+}
