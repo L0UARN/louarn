@@ -8,46 +8,61 @@ window.addEventListener('load', () => {
     container.style.height = '100%';
     container.style.backgroundColor = '#222222';
     container.style.transition = 'opacity 100ms';
+    container.style.padding = '1rem';
 
     let display = document.createElement('p');
+    display.style.display = 'inline';
     display.style.fontFamily = 'Cascadia Code';
     display.style.fontSize = '1.5rem';
     display.style.color = '#FFFFFF';
-    display.style.margin = '1rem';
+    display.style.margin = '0';
+
+    let cursor = document.createElement('p');
+    cursor.style.fontFamily = 'Cascadia Code';
+    cursor.style.fontSize = '1.5rem';
+    cursor.style.color = '#FFFFFF';
+    cursor.style.margin = '0 0 0 1rem';
+    cursor.innerText = '_';
 
     container.appendChild(display);
+    container.appendChild(cursor);
     document.getElementsByTagName('body').item(0).appendChild(container);
 
-    progressiveDisplay(display, container);
+    progressiveDisplay(display, cursor, container);
 });
 
-async function progressiveDisplay(display, container) {
-    let text = "Welcome to Louarn's website!\n\n"
-        + "Loading resources...\n"
-        + "├ Phase 1: loading skills...\n"
-        + "│ ├ Hard skills : ok\n"
-        + "│ ├ Soft skills : ok\n"
-        + "│ └ Mad g@m3r skillz : ok\n"
-        + "├ Phase 2: loading hobbies...\n"
-        + "│ ├ Gaming : ok\n"
-        + "│ ├ Music : ok\n"
-        + "│ └ Reading : ok\n"
-        + "Done loading !\n\n"
-        + "Entering website...\n";
+async function progressiveDisplay(display, cursor, container) {
+    let text = [
+        'Welcome to Louarn\'s website !',
+        '\n\nLoading resources...',
+        '\n├ Phase 1: loading skills...',
+        '\n│ ├ Hard skills : ok',
+        '\n│ └ Soft skills : ok',
+        '\n├ Phase 2: loading hobbies...',
+        '\n│ ├ Gaming : ok',
+        '\n│ ├ Music : ok',
+        '\n│ └ Reading : ok',
+        '\nDone loading !',
+        '\n\nEntering website...\n'
+    ]
 
-    let current = '';
+    let current = [];
 
-    let id = setInterval(() => {
-        current = text.substring(0, current.length + 1);
-        display.innerText = current;
+    let id1 = setInterval(() => {
+        current = text.slice(0, current.length + 1);
+        display.innerText = current.join('');
 
         if (current.length === text.length) {
             container.style.opacity = '0';
-            clearInterval(id);
+            clearInterval(id1);
 
             setTimeout(() => {
                 container.remove();
             }, 100);
         }
-    }, 16);
+    }, 150);
+
+    setInterval(() => {
+        cursor.style.display = (cursor.style.display === 'none') ? 'inline' : 'none';
+    }, 50);
 }
