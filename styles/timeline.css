@@ -1,0 +1,102 @@
+.timeline {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.timeline > section {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2rem;
+}
+
+.timeline > section > article {
+    position: relative;
+    border: 2px solid #000000;
+    border-radius: 6px;
+    margin: 0 2rem;
+    padding: 0;
+}
+
+.timeline > section > article:hover > img {
+    transform: scale(1.05);
+    border-radius: 6px;
+}
+
+.timeline > section > article > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.timeline > section > article > div > h3 {
+    background-color: #FFC000;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.timeline > section > article > div > p {
+    background-color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.timeline > section > article > img {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+
+    transition: transform 200ms, border-radius 100ms;
+}
+
+.timeline > section > article:after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -2;
+    bottom: -3rem;
+    left: 50%;
+    width: 1rem;
+    height: 3rem;
+    transform: translateX(-50%);
+    background-color: #FFC000;
+}
+
+.timeline > div {
+    position: relative;
+    width: 100%;
+    height: 1rem;
+    background-color: #FFC000;
+}
+
+.timeline > div:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5%;
+    height: 100%;
+    background: linear-gradient(to right, #FFFFFF, #FFFFFF, #FFC000);
+}
+
+.timeline > div:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5%;
+    height: 100%;
+    background: linear-gradient(to left, #FFFFFF, #FFFFFF, #FFC000);
+}
