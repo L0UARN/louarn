@@ -1,34 +1,41 @@
 window.addEventListener('load', () => {
-    let container = document.createElement('div');
-    container.style.zIndex = '999';
-    container.style.position = 'absolute';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '100%';
-    container.style.backgroundColor = '#222222';
-    container.style.transition = 'opacity 100ms';
-    container.style.padding = '1rem';
+    if (!document.cookie.includes('loadingDisplayed=1')) {
+        document.cookie = `loadingDisplayed=1;expires=${Date.now() + 1000 * 60 * 30}`;
 
-    let display = document.createElement('p');
-    display.style.display = 'inline';
-    display.style.fontFamily = 'Cascadia Code';
-    display.style.fontSize = '1.5rem';
-    display.style.color = '#FFFFFF';
-    display.style.margin = '0';
+        let container = document.createElement('div');
+        container.style.zIndex = '999';
+        container.style.position = 'absolute';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.backgroundColor = '#222222';
+        container.style.transition = 'opacity 100ms';
+        container.style.padding = '1rem';
 
-    let cursor = document.createElement('p');
-    cursor.style.fontFamily = 'Cascadia Code';
-    cursor.style.fontSize = '1.5rem';
-    cursor.style.color = '#FFFFFF';
-    cursor.style.margin = '0 0 0 1rem';
-    cursor.innerText = '_';
+        let display = document.createElement('p');
+        display.style.display = 'inline';
+        display.style.fontFamily = 'Cascadia Code';
+        display.style.fontSize = '1.5rem';
+        display.style.color = '#FFFFFF';
+        display.style.margin = '0';
 
-    container.appendChild(display);
-    container.appendChild(cursor);
-    document.getElementsByTagName('body').item(0).appendChild(container);
+        let cursor = document.createElement('p');
+        cursor.style.fontFamily = 'Cascadia Code';
+        cursor.style.fontSize = '1.5rem';
+        cursor.style.color = '#FFFFFF';
+        cursor.style.margin = '0 0 0 1rem';
+        cursor.innerText = '_';
 
-    progressiveDisplay(display, cursor, container);
+        container.appendChild(display);
+        container.appendChild(cursor);
+
+        let body = document.getElementsByTagName('body').item(0);
+        body.appendChild(container);
+        body.style.overflow = 'hidden';
+
+        progressiveDisplay(display, cursor, container);
+    }
 });
 
 async function progressiveDisplay(display, cursor, container) {
@@ -57,12 +64,13 @@ async function progressiveDisplay(display, cursor, container) {
             clearInterval(id1);
 
             setTimeout(() => {
+                container.parentElement.style.overflow = 'auto';
                 container.remove();
             }, 100);
         }
-    }, 150);
+    }, 200);
 
     setInterval(() => {
         cursor.style.display = (cursor.style.display === 'none') ? 'inline' : 'none';
-    }, 50);
+    }, 100);
 }
