@@ -8,16 +8,48 @@ main {
 }
 
 main > article {
-    max-width: 33%;
-    margin: 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+main > article {
+    max-width: 40%;
+    margin: 2rem 0;
+}
+
+main > article > .illustration, .content {
+    padding: 1rem;
+}
+
+main > article > .illustration {
+    align-self: flex-start;
+    flex-basis: 25%;
+}
+
+main > article > .illustration > img {
+    max-width: 100%;
+}
+
+main > article > .content {
+    flex-basis: 75%;
 }
 
 main > article:nth-of-type(odd) {
     align-self: flex-start;
-    margin-left: 25%;
+    margin-left: 20%;
+}
+
+main > article:nth-of-type(odd) > .illustration {
+    order: -1;
 }
 
 main > article:nth-of-type(even) {
     align-self: flex-end;
     margin-right: 25%;
+}
+
+main > article:nth-of-type(even) > .illustration {
+    order: 1;
 }
