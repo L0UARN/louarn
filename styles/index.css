@@ -19,8 +19,8 @@ main > article {
     margin: 2rem 0;
 }
 
-main > article > .illustration, .content {
-    padding: 1rem;
+main > article > .content {
+    flex-basis: 75%;
 }
 
 main > article > .illustration {
@@ -32,10 +32,6 @@ main > article > .illustration > img {
     max-width: 100%;
 }
 
-main > article > .content {
-    flex-basis: 75%;
-}
-
 main > article:nth-of-type(odd) {
     align-self: flex-start;
     margin-left: 20%;
@@ -43,6 +39,7 @@ main > article:nth-of-type(odd) {
 
 main > article:nth-of-type(odd) > .illustration {
     order: -1;
+    padding-right: 4rem;
 }
 
 main > article:nth-of-type(even) {
@@ -52,4 +49,5 @@ main > article:nth-of-type(even) {
 
 main > article:nth-of-type(even) > .illustration {
     order: 1;
+    padding-left: 4rem;
 }
